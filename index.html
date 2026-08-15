@@ -4,18 +4,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>k8now — your kitesurf crew</title>
-  <meta name="description" content="Live wind forecasts & alerts for your spots, shared sessions, live webcams, and a used-gear marketplace. Join the crew on Discord." />
+  <meta name="description" content="Kitesurf forecasts, alerts, sessions, live webcams & a gear marketplace — on Discord." />
 
-  <!-- Social / WhatsApp link preview -->
+  <!-- Social / WhatsApp link preview (kept short so it doesn't dominate) -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="k8now" />
   <meta property="og:title" content="k8now — your kitesurf crew 🪁" />
-  <meta property="og:description" content="Live wind forecasts & 'it's ON' alerts for your spots · shared sessions · live webcams · a used-gear marketplace · Stoke ranks. Tap to join the crew on Discord." />
+  <meta property="og:description" content="Forecasts, alerts, sessions, webcams & a gear marketplace. Tap to join." />
   <meta property="og:image" content="https://adamcodeworks.github.io/k8now/logo.png" />
   <meta property="og:url" content="https://adamcodeworks.github.io/k8now/" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="k8now — your kitesurf crew 🪁" />
-  <meta name="twitter:description" content="Live forecasts & alerts · sessions · webcams · gear marketplace. Join the crew on Discord." />
+  <meta name="twitter:description" content="Forecasts, alerts, sessions, webcams & a gear marketplace. Tap to join." />
   <meta name="twitter:image" content="https://adamcodeworks.github.io/k8now/logo.png" />
   <meta name="theme-color" content="#1e9de3" />
   <link rel="icon" href="logo.png" />
@@ -35,7 +35,8 @@
     }
     .logo { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 8px 24px rgba(0,0,0,.4); }
     h1 { font-size: 34px; margin: 18px 0 6px; letter-spacing: -.5px; }
-    .tag { font-size: 17px; opacity: .92; margin: 0 0 22px; }
+    .tag { font-size: 17px; opacity: .92; margin: 0 0 8px; }
+    .members { font-size: 15px; font-weight: 600; opacity: .95; margin: 0 0 22px; min-height: 20px; }
     ul { list-style: none; padding: 0; margin: 0 0 28px; text-align: left; display: inline-block; }
     li { font-size: 16px; margin: 10px 0; opacity: .96; }
     .btn {
@@ -52,6 +53,7 @@
     <img class="logo" src="logo.png" alt="k8now" />
     <h1>k8now 🪁</h1>
     <p class="tag">Your kitesurf crew's wingman on Discord.</p>
+    <p class="members" id="members"></p>
     <ul>
       <li>⚡ Live forecasts &amp; "it's ON" alerts for <em>your</em> spots</li>
       <li>🤝 Rally shared sessions with the crew</li>
@@ -67,9 +69,18 @@
     // Route the join button to the most relevant channel invite (?to=market etc.).
     var invites = { market: "https://discord.gg/4zWCBymhqn", "default": "https://discord.gg/7pxvTVQehB" };
     var to = new URLSearchParams(location.search).get("to");
-    var url = invites[to] || invites["default"];
     var el = document.getElementById("join");
-    if (el) el.setAttribute("href", url);
+    if (el) el.setAttribute("href", invites[to] || invites["default"]);
+
+    // Live member count (social proof). Silently hidden if it can't be fetched.
+    fetch("https://discord.com/api/v10/invites/7pxvTVQehB?with_counts=true")
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var n = d && d.approximate_member_count;
+        var m = document.getElementById("members");
+        if (n && m) m.textContent = "🪁 Join " + n.toLocaleString() + " kiters";
+      })
+      .catch(function () {});
   </script>
 </body>
 </html>

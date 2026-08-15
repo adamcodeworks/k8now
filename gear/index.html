@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kite gear for sale — k8now</title>
+  <meta name="description" content="See the listing and message the seller on the k8now crew Discord." />
+
+  <!-- Sale-focused preview so WhatsApp leads with the sale, not a k8now blurb -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="k8now marketplace" />
+  <meta property="og:title" content="🪁 Kite gear for sale" />
+  <meta property="og:description" content="Tap to see the listing & message the seller." />
+  <meta property="og:image" content="https://adamcodeworks.github.io/k8now/logo.png" />
+  <meta property="og:url" content="https://adamcodeworks.github.io/k8now/gear/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="🪁 Kite gear for sale" />
+  <meta name="twitter:description" content="Tap to see the listing & message the seller." />
+  <meta name="twitter:image" content="https://adamcodeworks.github.io/k8now/logo.png" />
+  <meta name="theme-color" content="#1e9de3" />
+  <link rel="icon" href="../logo.png" />
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 50% -10%, #1e9de3 0%, #0b6ea3 40%, #073b56 100%);
+      color: #fff; padding: 24px; text-align: center;
+    }
+    .card {
+      max-width: 460px; width: 100%; background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15); border-radius: 24px; padding: 40px 28px;
+      backdrop-filter: blur(8px); box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+    .logo { width: 84px; height: 84px; border-radius: 20px; box-shadow: 0 8px 24px rgba(0,0,0,.4); }
+    h1 { font-size: 30px; margin: 16px 0 8px; letter-spacing: -.5px; }
+    .tag { font-size: 17px; opacity: .92; margin: 0 0 8px; }
+    .members { font-size: 15px; font-weight: 600; opacity: .95; margin: 0 0 24px; min-height: 20px; }
+    .btn {
+      display: inline-block; background: #5865F2; color: #fff; text-decoration: none;
+      font-weight: 700; font-size: 18px; padding: 15px 32px; border-radius: 14px;
+      box-shadow: 0 10px 24px rgba(88,101,242,.5); transition: transform .1s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .foot { margin-top: 16px; font-size: 13px; opacity: .7; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img class="logo" src="../logo.png" alt="k8now" />
+    <h1>🪁 Kite gear for sale</h1>
+    <p class="tag">See the listing &amp; message the seller in the k8now marketplace.</p>
+    <p class="members" id="members"></p>
+    <a class="btn" href="https://discord.gg/4zWCBymhqn" rel="noopener">Open the marketplace on Discord →</a>
+    <div class="foot">Free to join · deals are member-to-member 🤝</div>
+  </div>
+
+  <script>
+    fetch("https://discord.com/api/v10/invites/4zWCBymhqn?with_counts=true")
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var n = d && d.approximate_member_count;
+        var m = document.getElementById("members");
+        if (n && m) m.textContent = "🪁 " + n.toLocaleString() + " kiters in the crew";
+      })
+      .catch(function () {});
+  </script>
+</body>
+</html>
