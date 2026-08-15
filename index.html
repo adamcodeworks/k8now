@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>k8now — your kitesurf crew</title>
+  <meta name="description" content="Live wind forecasts & alerts for your spots, shared sessions, live webcams, and a used-gear marketplace. Join the crew on Discord." />
+
+  <!-- Social / WhatsApp link preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="k8now" />
+  <meta property="og:title" content="k8now — your kitesurf crew 🪁" />
+  <meta property="og:description" content="Live wind forecasts & 'it's ON' alerts for your spots · shared sessions · live webcams · a used-gear marketplace · Stoke ranks. Tap to join the crew on Discord." />
+  <meta property="og:image" content="https://adamcodeworks.github.io/k8now/logo.png" />
+  <meta property="og:url" content="https://adamcodeworks.github.io/k8now/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="k8now — your kitesurf crew 🪁" />
+  <meta name="twitter:description" content="Live forecasts & alerts · sessions · webcams · gear marketplace. Join the crew on Discord." />
+  <meta name="twitter:image" content="https://adamcodeworks.github.io/k8now/logo.png" />
+  <meta name="theme-color" content="#1e9de3" />
+  <link rel="icon" href="logo.png" />
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 50% -10%, #1e9de3 0%, #0b6ea3 40%, #073b56 100%);
+      color: #fff; padding: 24px; text-align: center;
+    }
+    .card {
+      max-width: 480px; width: 100%; background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15); border-radius: 24px; padding: 40px 28px;
+      backdrop-filter: blur(8px); box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+    .logo { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 8px 24px rgba(0,0,0,.4); }
+    h1 { font-size: 34px; margin: 18px 0 6px; letter-spacing: -.5px; }
+    .tag { font-size: 17px; opacity: .92; margin: 0 0 22px; }
+    ul { list-style: none; padding: 0; margin: 0 0 28px; text-align: left; display: inline-block; }
+    li { font-size: 16px; margin: 10px 0; opacity: .96; }
+    .btn {
+      display: inline-block; background: #5865F2; color: #fff; text-decoration: none;
+      font-weight: 700; font-size: 18px; padding: 15px 34px; border-radius: 14px;
+      box-shadow: 0 10px 24px rgba(88,101,242,.5); transition: transform .1s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .foot { margin-top: 18px; font-size: 13px; opacity: .7; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img class="logo" src="logo.png" alt="k8now" />
+    <h1>k8now 🪁</h1>
+    <p class="tag">Your kitesurf crew's wingman on Discord.</p>
+    <ul>
+      <li>⚡ Live forecasts &amp; "it's ON" alerts for <em>your</em> spots</li>
+      <li>🤝 Rally shared sessions with the crew</li>
+      <li>📹 Live spot webcams</li>
+      <li>💸 Buy &amp; sell used gear in the marketplace</li>
+      <li>🏆 Earn Stoke &amp; climb the ranks</li>
+    </ul>
+    <a id="join" class="btn" href="https://discord.gg/7pxvTVQehB" rel="noopener">Join the crew on Discord →</a>
+    <div class="foot">Free · takes 30 seconds · see you out there 🤙</div>
+  </div>
+
+  <script>
+    // Route the join button to the most relevant channel invite (?to=market etc.).
+    var invites = { market: "https://discord.gg/4zWCBymhqn", "default": "https://discord.gg/7pxvTVQehB" };
+    var to = new URLSearchParams(location.search).get("to");
+    var url = invites[to] || invites["default"];
+    var el = document.getElementById("join");
+    if (el) el.setAttribute("href", url);
+  </script>
+</body>
+</html>
